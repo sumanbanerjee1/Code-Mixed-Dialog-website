@@ -4,7 +4,7 @@ block title
   title Code-Mixed Dialog Dataset
 
 block description
-  meta(name='description', content='Code-Mixed Dialog Dataset contains code-mixed conversations for 4 Indian languages')
+  meta(name='description', content='Code-Mixed Dialog Dataset contains code-mixed goal-oriented conversations in 4 Indian languages')
 
 block extralinks
   link(rel='stylesheet', href='/stylesheets/index.css')
@@ -153,51 +153,41 @@ block content
                 h2 What is Code-Mixed Dialog Data?
               p 
                 span 
-                | DailyDialog++ is an open-domain dialogue evaluation dataset consisting of 19k contexts with five relevant responses for each context. Additionally for 11k contexts, it includes five adversarial irrelevant responses which are specifically crafted to have lexical or semantic overlap with the context but are still unacceptable as valid responses. We hope that DailyDialog++ will be a useful resource in achieving better training and robust evaluation of dialogue evaluation metrics.              
-                a.btn.actionBtn(href="/explore/1.0/test/") Explore DailyDialog++
-                a.btn.actionBtn(href="") DailyDialog++ paper (TACL 2020)
+                | Most of the existing datasets for building conversation systems focus on monolingual conversations and there is hardly any work on multilingual and/or code-mixed conversations. Such datasets and systems thus do not cater to the multilingual regions of the world, such as India, where it is very common for people to speak more than one language and seamlessly switch between them resulting in code-mixed conversations. For example, a Hindi speaking user looking to book a restaurant would typically ask, “Kya tum is restaurant mein ek table book karne mein meri help karoge?” (“Can you help me in booking a table at this restaurant?”). To facilitate the development of such code-mixed conversation models, we build a goal-oriented dialog dataset containing code-mixed conversations. Specifically, we take the text from the DSTC2 restaurant reservation dataset and create code-mixed versions of it in Hindi-English, Bengali-English, Gujarati-English and Tamil-English.              
+                a.btn.actionBtn(href="/explore/1.0/test/") Explore Code-Mixed Dialog
+                a.btn.actionBtn(href="https://www.aclweb.org/anthology/C18-1319/") Code-Mixed Dialog paper (COLING 2018)
               hr
               .infoHeadline
                 h2 Getting Started
               p 
-                | Download the dataset of 11k contexts with 5 relevant and 5 adversarial irrelevant responses per context. 
+                | Download the dataset containing the train-dev-test splits in all the languages, along with the splits of the vocabularies into English words, native-language words and named entities. 
                 ul.list-unstyled
                   li
-                    a.btn.actionBtn.inverseBtn(href="/dataset/train.json", download)
-                      | Training Set (11 MB)
-                  li
-                    a.btn.actionBtn.inverseBtn(href="/dataset/dev.json", download)
-                      | Dev Set (1 MB)
-                  li
-                    a.btn.actionBtn.inverseBtn(href="/dataset/test.json", download)
-                      | Test Set (1 MB)
+                    a.btn.actionBtn.inverseBtn(href="/code-mixed-dataset/code-mixed-dialog-dataset.zip", download)
+                      |  Download Dataset 
               hr
               .infoHeadline
                 h2 Models
                 p 
                 span
-                  | We propose 
-                  b D
-                  |ialogue 
-                  b E
-                  |valuation with 
-                  b B
-                  |ert (DEB), 
-                |  a new BERT-based evaluation metric which is pretrained on a massive corpus of 727 Million Reddit conversations. DEB significantly outperforms existing models, showing better correlation with human judgements and better performance on random negatives. Check out the code for DEB and other Dialogue evaluation baselines like RUBER, ADEM, etc                
+                  | We establish some initial baseline results on this code-mixed dataset by evaluating two different generation based models : 
+                  li
+                    a(href="https://arxiv.org/pdf/1409.0473.pdf") Sequence-to-Sequence with Attention model (Bahdanau et al., 2015) 
+                  li
+                    a(href="https://arxiv.org/pdf/1507.04808.pdf") Hierarchical Recurrent Encoder-Decoder (HRED) model (Serban et al., 2016).
+                  br
+                  | Checkout the code for these baseline models as well as the evaluation scripts below.
                 
                 ul.list-unstyled
                   li
-                    a.btn.actionBtn.inverseBtn(href="https://github.com/iitmnlp/Dialogue-Evaluation-with-BERT", download)
+                    a.btn.actionBtn.inverseBtn(href="https://github.com/sumanbanerjee1/Code-Mixed-Dialog", download)
                       | Code
                   li
               .infoHeadline
                 h2 Have Questions?
               p 
                 | Ask us questions at   
-                a(href="mailto:makashkumar99@gmail.com") makashkumar99@gmail.com
-                |  and 
-                a(href="mailto:ananya@cse.iitm.ac.in") ananya@cse.iitm.ac.in
-                | .
+                a(href="mailto:suman@cse.iitm.ac.in") suman@cse.iitm.ac.in .
             .infoSubheadline
               include includes/tweet
               include includes/github
