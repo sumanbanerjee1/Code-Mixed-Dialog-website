@@ -28,16 +28,16 @@ block content
   .cover
     .container
       .row
-        .col-md-4
-          h1 Explore Code-Mixed Dialog Dataset
-          .infoCard
-            .infoBody
-              h2 Version #{version}, #{split} set
-              +model_showcase()
-        .col-md-8
-          h1 Visualize Model Predictions
-          each model in models.sort().reverse()
-              .infoCard
-                .infoBody
-                    +model_showcase(model, version)
+        //- .col-md-4
+        h1 Explore Code-Mixed Dialog Dataset
+        .infoCard
+          .infoBody
+            h2 Version #{version}, #{split} set
+            +model_showcase()
+        //- .col-md-8
+        //-   h1 Visualize Model Predictions
+        //-   each model in models.sort().reverse()
+        //-       .infoCard
+        //-         .infoBody
+        //-             +model_showcase(model, version)
                         

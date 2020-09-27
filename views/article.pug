@@ -31,20 +31,20 @@ block content
                 each paragraph in paragraphs
                   .para-wrap
                     .row
-                      .col-md-6
-                        pre !{paragraph.context.replace(/Speaker A:/g, "Speaker A:".bold()).replace(/Speaker B:/g, "Speaker B:".bold())}
-                      .col-md-6
-                        .qas-wrap
-                          each response in paragraph.responses
-                            .qa-wrap(data-id=response.id)
-                              p 
-                                strong.question #{response.text}
-                              ul.list-unstyled
-                                li
-                                  p
-                                    i Label: 
-                                      span.answer #{response.label}
-                                li.prediction-holder
-                                  p
-                                    i Prediction: 
-                                    span.prediction
+                      //- .col-md-6
+                      pre !{paragraph.context.replace(/Speaker A:/g, "Speaker A:".bold()).replace(/Speaker B:/g, "Speaker B:".bold()).replace(/KB Triple:/g, "KB Triple:".bold())}
+                      //- .col-md-6
+                      //-   .qas-wrap
+                      //-     each response in paragraph.responses
+                      //-       .qa-wrap(data-id=response.id)
+                      //-         p 
+                      //-           strong.question #{response.text}
+                      //-         ul.list-unstyled
+                      //-           li
+                      //-             p
+                      //-               i Label: 
+                      //-                 span.answer #{response.label}
+                      //-           li.prediction-holder
+                      //-             p
+                      //-               i Prediction: 
+                      //-               span.prediction

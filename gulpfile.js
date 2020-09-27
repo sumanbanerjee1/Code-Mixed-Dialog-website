@@ -181,7 +181,7 @@ gulp.task('connect', function () {
   })
 })
 
-var dataset_folder = './dataset/'
+var dataset_folder = './code-mixed-dataset/'
 var filepaths = [
   dataset_folder + 'test-v1.0.json',
   // dataset_folder + 'dev-v2.0.json',
