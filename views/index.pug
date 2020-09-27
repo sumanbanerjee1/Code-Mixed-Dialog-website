@@ -11,136 +11,179 @@ block extralinks
   script(async defer src="https://buttons.github.io/buttons.js")
 
 block extrascripts
-
-mixin trained_on_random_negatives(group, is_test)
+mixin dataset_stats()
   table.table.performanceTable
     tr
-      if is_test
-        th Rank
-      th Model
-      th Accuracy
-      th PBC 
-    - var human_em = 86.831
-    - var human_f1 = 89.452
+      th 
+      th Hindi
+      th Bengali
+      th Gujarati
+      th Tamil 
       tr
         td
-          p #{"1"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | RUBER-Large 
-          p.institution #{"Peking University"}
-          a(href="https://arxiv.org/abs/1701.03079") (Tao & al., '17)
-        td #{68.92}
-        td #{0.42}
+          p #{"Vocabulary Size"}
+        td #{1676}
+        td #{1372}
+        td #{1858}
+        td #{2185}
 
       tr
         td
-          p #{"2"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | DEB <b>
-          p.institution #{"IIT Madras"}
-          a(href="") (Sai & al. '20)
-        td #{66.78}
-        td #{0.39}
-
+          p #{"Code-Mixed English Vocabulary"}
+        td #{386}
+        td #{360}
+        td #{387}
+        td #{424}
       tr
-        td
-          p #{"3"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | RUBER <b>
-          p.institution #{"Peking University"}
-          a(href="https://arxiv.org/abs/1701.03079") (Tao & al., '17)
-        td #{65.00}
-        td #{0.35}
-
+        td 
+          p #{"Native Language Vocabulary"}
+        td #{739}
+        td #{477}
+        td #{912}
+        td #{1214}
       tr
-        td
-          p #{"4"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | ADEM <b>
-          p.institution #{"McGill University"}
-          a(href="https://arxiv.org/abs/1708.07149") (Lowe & al., '17)
-        td #{64.43}
-        td #{0.37}
-
+        td 
+          p #{"Others Vocabulary"}
+        td #{551}
+        td #{535}
+        td #{559}
+        td #{547}
       tr
-        td
-          p #{"5"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | BERT+DNN <b>
-          p.institution #{"University of Southern California"}
-          a(href="https://arxiv.org/abs/1904.10635") (Ghazarian et al., 2019)
-        td #{60.14}
-        td #{0.29}
+        td 
+          p #{"Unique Utterances"}
+        td #{6549}
+        td #{6274}
+        td #{6417}
+        td #{6666}
+      tr
+        td 
+          p #{"Utterances with code-mixed words"}
+        td #{5750}
+        td #{5703}
+        td #{5643}
+        td #{5632}
+      tr
+        td 
+          p #{"Pure Native Language utterances"}
+        td #{348}
+        td #{210}
+        td #{340}
+        td #{420}
+      tr
+        td 
+          p #{"Pure English utterances"}
+        td #{451}
+        td #{361}
+        td #{434}
+        td #{614}
+      tr
+        td 
+          p #{"Average length of utterances"}
+        td #{8.16}
+        td #{7.74}
+        td #{8.04}
+        td #{6.78}
+      tr
+        td 
+          p #{"Average code-mixed utterances per dialog"}
+        td #{12.11}
+        td #{14.28}
+        td #{11.8}
+        td #{12.96}
 
-
-mixin trained_on_both(group, is_test)
-  table.table.performanceTable
+mixin results_seq2seq()
+  table.table.resultTable
     tr
-      if is_test
-        th Rank
-      th Model
-      th Accuracy
-      th PBC       
-      tr
-        td
-          p #{"1"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | DEB <b>
-          p.institution #{"IIT Madras"}
-          a(href="") (Sai & al. '20)
-        td #{92.66}
-        td #{0.86}
+      th(colspan='6') #{"Seq2seq with Attention"}
+    tr
+      td #{"Metrics"}
+      td #{"English"}
+      td #{"Hindi"}
+      td #{"Bengali"}
+      td #{"Gujarati"}
+      td #{"Tamil"}
+    tr
+      td #{"BLEU-4"}
+      td #{"56.6"}
+      td #{"54.0"}
+      td #{"56.8"}
+      td #{"53.8"}
+      td #{"62.1"}
+    tr
+      td #{"ROUGE-1"}
+      td #{"67.2"}
+      td #{"62.9"}
+      td #{"67.4"}
+      td #{"64.7"}
+      td #{"67.8"}
+    tr
+      td #{"ROUGE-2"}
+      td #{"55.9"}
+      td #{"52.4"}
+      td #{"57.5"}
+      td #{"54.8"}
+      td #{"56.3"}
+    tr
+      td #{"ROUGE-L"}
+      td #{"64.8"}
+      td #{"61.0"}
+      td #{"65.1"}
+      td #{"62.6"}
+      td #{"65.6"}  
+    tr
+      td #{"Per response acc."}
+      td #{"46.0"}
+      td #{"48.0"}
+      td #{"50.4"}
+      td #{"47.6"}
+      td #{"49.3"}
 
-      tr
-        td
-          p #{"2"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | BERT+DNN <b>
-          p.institution #{"University of Southern California"}
-          a(href="https://arxiv.org/abs/1904.10635") (Ghazarian et al., 2019)
-        td #{86.61}
-        td #{0.79}
-
-      tr
-        td
-          p #{"3"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | RUBER-Large <b>
-          p.institution #{"Peking University"}
-          a(href="https://arxiv.org/abs/1701.03079") (Tao & al. '17)
-        td #{86.52}
-        td #{0.78}
-
-      tr
-        td
-          p #{"4"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | RUBER <b>
-          p.institution #{"Peking University"}
-          a(href="https://arxiv.org/abs/1701.03079") (Tao & al. '17)
-        td #{83.81}
-        td #{0.74}
-
-      tr
-        td
-          p #{"5"}
-          span.date.label.label-default #{"Sep 13, 2020"}
-        td
-          | ADEM <b>
-          p.institution #{"McGill University"}
-          a(href="https://arxiv.org/abs/1708.07149") (Lowe & al., '17)
-        td #{66.62}
-        td #{0.41}
-
+mixin results_hred()
+  table.table.resultTable
+    tr
+      th(colspan='6') #{"Hierarchical Recurrent Encoder-Decoder (HRED)"}
+    tr
+      td #{"Metrics"}
+      td #{"English"}
+      td #{"Hindi"}
+      td #{"Bengali"}
+      td #{"Gujarati"}
+      td #{"Tamil"}
+    tr
+      td #{"BLEU-4"}
+      td #{"57.8"}
+      td #{"54.1"}
+      td #{"56.7"}
+      td #{"54.1"}
+      td #{"60.7"}
+    tr
+      td #{"ROUGE-1"}
+      td #{"67.9"}
+      td #{"63.3"}
+      td #{"67.1"}
+      td #{"65.3"}
+      td #{"67.1"}
+    tr
+      td #{"ROUGE-2"}
+      td #{"57.5"}
+      td #{"52.6"}
+      td #{"56.9"}
+      td #{"55.2"}
+      td #{"55.6"} 
+    tr
+      td #{"ROUGE-L"}
+      td #{"65.7"}
+      td #{"61.5"}
+      td #{"64.8"}
+      td #{"63.2"}
+      td #{"65.1"}
+    tr
+      td #{"Per response acc."}
+      td #{"48.8"}
+      td #{"47.2"}
+      td #{"47.7"}
+      td #{"47.9"}
+      td #{"47.8"}
 
 block content
   .cover#contentCover
@@ -195,13 +238,14 @@ block content
           .infoCard
             .infoBody
               .infoHeadline
-                h2 Results (trained on random negatives)
-              p DailyDialog++ evaluates the ability of dailog evaluation metrics to distinguish between the relevant and irrelevant responses to a given context. Here, we report the test perfromance of various metrics in differentiating between relevant and adversarial irrelevant responses when trained with random negative responses (sampling random utterances from other contexts). We use accuracy and the Point-biserial correlation (PBC) coefficient as the performance measure. We observe that the performance of all metrics including DEB is poor when evaluated on adversarial examples from our dataset.
-              +trained_on_random_negatives(test2, true)
+                h2 Dataset Statistics
+              p This table summarizes various statistics about the dataset such as total vocabulary size, native language vocabulary size, etc. For every word in the code-mixed corpus, we were able to identify whether it was a word from the native language or English or language agnostic (named entities).  It was easy to do this because we had the vocabulary of the original English DSTC2 corpus as well as named entities. We provide such annotations for the vocabularies of individual languages.
+              +dataset_stats()
           .infoCard
             .infoBody
               .infoHeadline
-                h2 Results (trained on random + adversarial negatives)
+                h2 Baseline Results
               p 
-                |  Here, we report the test perfromance of various metrics in differentiating between the relevant and adversarial irrelevant responses when trained with both random and adversarial irrelevant responses. We observe that DEB significantly outperforms all the other metrics.
-              +trained_on_both(test1, true)
+                |  Here, we report the performance of the two baseline models on our dataset using various metrics such as BLEU-4, ROUGE-1, ROUGE-2 and ROUGE-L. We also compute the per utterance accuracy (exact match) by comparing the generated response with the ground truth response. These results show a clear scope of further improvements.
+              +results_seq2seq()
+              +results_hred()
